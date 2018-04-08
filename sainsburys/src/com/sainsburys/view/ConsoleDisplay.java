@@ -16,9 +16,9 @@ public class ConsoleDisplay {
 		.disableHtmlEscaping()
 		.create();
 		
+		//If we have a non empty results set, make a json object of it
 		if (results != null)
 		{
-			
 			String json = gson.toJson(results);
 			System.out.println(json);
 		}

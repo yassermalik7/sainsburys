@@ -46,11 +46,13 @@ public class ItemScraperSainsburysImpl implements ItemScraper
 	{
 		Element element = doc.getElementsByClass("nutritionLevel1").first();
 		
+		// Three types of placeholders for Kcal value
+		// If first method fails then attempt to find Kcal by tableRow0
 		if (element == null)
 		{
 			element = doc.getElementsByClass("tableRow0").first();
 		}
-		
+		// If Kcal is still null, then attempt to find using selector method
 		if (element == null)
 		{
 			Elements td = doc.select("#mainPart > div:nth-child(2) > div > div > div.tableWrapper > table > tbody > tr:nth-child(2)");
@@ -62,13 +64,14 @@ public class ItemScraperSainsburysImpl implements ItemScraper
 			  return kCalPer100;
 			}
 		}
-		
+		// If kcal still not found, it is not present, return 0 for value
 		if (element == null)
 		{
 			return 0;
 		}
 
 		String text = element.text();
+		// only take the number value from the obtained value
 		int kCalPer100 = Integer.valueOf(text.substring(0, text.indexOf("kcal")));
 	    
 		return kCalPer100;

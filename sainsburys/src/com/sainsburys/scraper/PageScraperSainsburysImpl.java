@@ -13,13 +13,14 @@ import com.sainsburys.model.Item;
 import com.sainsburys.model.Results;
 import com.sainsburys.view.ConsoleDisplay;
 
-public class PageScraperSainsburysImpl implements PageScraper {
-	
+public class PageScraperSainsburysImpl implements PageScraper 
+{
 	Results results;
 	ConsoleDisplay console;
 	
 	// Inject dependencies
-	public PageScraperSainsburysImpl(Results results, ConsoleDisplay console){
+	public PageScraperSainsburysImpl(Results results, ConsoleDisplay console)
+	{
 		this.results = results;
 		this.console = console;
 	}
@@ -36,21 +37,23 @@ public class PageScraperSainsburysImpl implements PageScraper {
         	Element elements = doc.getElementsByClass("productLister").first();
         	Elements elementsList = elements.getElementsByClass("gridItem");
         	 	
-        	for (Element e : elementsList) {
-				
+        	for (Element e : elementsList) 
+        	{
         		Element productInfoElement = e.getElementsByClass("productInfo").first();
 				Element a = productInfoElement.select("a").first();
 				String unformatLink = a.attr("href");
+				// used substring to remove trailing ../../ from href of product
 				String link = "https://jsainsburyplc.github.io/serverside-test/site/www.sainsburys.co.uk/" + unformatLink.substring(unformatLink.indexOf('s'));
 				// check individual item and add to list
-				items.add(itemScraper.scrapeItemDetails(link));
-				
+				items.add(itemScraper.scrapeItemDetails(link));	
 			}
         	
     		results.setResults(items);
     		results.setTotal(calculateTotal(items));
     		
-        } catch (IOException e) {
+        } 
+		catch (IOException e) 
+		{
 			e.printStackTrace();
 		}
 		
@@ -59,12 +62,15 @@ public class PageScraperSainsburysImpl implements PageScraper {
 		
 	}
 	
-	public Float calculateTotal(List<Item> items){
+	public Float calculateTotal(List<Item> items)
+	{
 		
-		Float total = 0.0f;
+		Float total = 0.00f;
 		
-		for (Item item : items) {
-			if (item.getUnitPrice() != null){
+		for (Item item : items) 
+		{
+			if (item.getUnitPrice() != null)
+			{
 				total += item.getUnitPrice();
 			}
 		}
