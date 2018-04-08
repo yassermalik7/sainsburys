@@ -7,8 +7,8 @@ import com.sainsburys.model.Results;
 
 public class ConsoleDisplay {
 
-	public void displayResultsAsJson(Results results){
-		
+	public void displayResultsAsJson(Results results)
+	{
 		// Use Gson to convert from Java object to JSON format
 		Gson gson = new GsonBuilder()
 		.setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
@@ -16,11 +16,14 @@ public class ConsoleDisplay {
 		.disableHtmlEscaping()
 		.create();
 		
-		if (results != null){
+		if (results != null)
+		{
 			
 			String json = gson.toJson(results);
 			System.out.println(json);
-		} else{
+		}
+		else
+		{
 			System.out.println("NULL");
 		};
 	}
