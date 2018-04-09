@@ -22,7 +22,14 @@ public class ItemScraperSainsburysImpl implements ItemScraper
     		// Get the document, find the attributes and add to item object 
 			Document doc = Jsoup.connect(url).get();
 			i.setTitle(scrapeTitle(doc));
-			i.setKcal(scrapeKcal(doc));
+			
+			int kal = scrapeKcal(doc);
+			//check if calories are available. If they arn't, don't set a value meaning the field won't
+			//be added to the resulting Json object
+			if (kal != 0)
+			{
+				i.setKcal(scrapeKcal(doc));
+			}
 			i.setUnitPrice(scrapeUnitPrice(doc));
 			i.setDescription(scrapeDescription(doc));
 		} 

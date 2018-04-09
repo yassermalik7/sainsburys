@@ -41,7 +41,7 @@
 	</dependencies>
 
 	<build>
-		<finalName>SainsburysTest</finalName>
+		<finalName>Sainsburys</finalName>
 		<plugins>
 
 			<!-- download source code in Eclipse, best practice -->
