@@ -1,5 +1,5 @@
-package com.sainsburys.model;
-
+package com.sainsburys.model; 
+ 
 public class Item {
 	private String title;
 	private int kcal_per_100g;

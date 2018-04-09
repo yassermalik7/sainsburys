@@ -2,7 +2,7 @@ package com.sainsburys.model;
 
 import java.util.List;
 
-public class Results 
+public class Results  
 {
 	private List<Item> results;
 	private Float total;
@@ -17,7 +17,7 @@ public class Results
 	}
 	public Float getTotal() 
 	{
-		return total;
+		return total; 
 	}
 	public void setTotal(Float total) 
 	{
