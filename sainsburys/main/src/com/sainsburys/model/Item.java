@@ -2,7 +2,7 @@ package com.sainsburys.model;
  
 public class Item {
 	private String title;
-	private int kcal_per_100g;
+	private Integer kcal_per_100g;
 	private Float unitPrice;
 	private String description;
 	
@@ -26,7 +26,7 @@ public class Item {
 	public int getKcal() {
 		return kcal_per_100g;
 	}
-	public void setKcal(int kcal) {
+	public void setKcal(Integer kcal) {
 		this.kcal_per_100g = kcal;
 	}
 	public Float getUnitPrice() {
